@@ -105,13 +105,13 @@ public class PeminjamanModel {
     }  
     
     public int getJumlahAlatTersedia(String idAlat) {
-    String sql = "SELECT jumlah_tersedia FROM alat WHERE id_alat = ?";
+    String sql = "SELECT jumlah_alat FROM alat WHERE id_alat = ?";
     try (Connection conn = DatabaseConnection.getConnection();
          PreparedStatement pstmt = conn.prepareStatement(sql)) {
         pstmt.setString(1, idAlat);
         ResultSet rs = pstmt.executeQuery();
         if (rs.next()) {
-            return rs.getInt("jumlah_tersedia");
+            return rs.getInt("jumlah_alat");
         }
     } catch (SQLException e) {
         e.printStackTrace();
